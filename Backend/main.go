@@ -81,7 +81,7 @@ func handleMessages() {
 func main() {
 	http.HandleFunc("/ws", handleConnection)
 
-	port := 8080
+	port := 8000
 	addr := fmt.Sprintf(":%d", port)
 
 	log.Printf("Starting WebSocket server on port %d...", port)
