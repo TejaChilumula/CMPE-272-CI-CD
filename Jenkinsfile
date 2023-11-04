@@ -1,15 +1,17 @@
 pipeline {
     agent any
 
-    stage('Checkout') {
+    
+
+    stages {
+        
+        stage('Checkout') {
             steps {
                 script {
                     git 'https://github.com/TejaChilumula/CMPE-272-CI-CD.git'
                 }
             }
         }
-
-    stages {
         stage('Check Backend') {
             steps {
                 script {
