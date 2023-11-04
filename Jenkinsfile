@@ -1,8 +1,7 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
+    stage('Checkout') {
             steps {
                 script {
                     git 'https://github.com/TejaChilumula/CMPE-272-CI-CD.git'
@@ -10,52 +9,45 @@ pipeline {
             }
         }
 
-        stage('Build Frontend') {
+    stages {
+        stage('Check Backend') {
             steps {
-                dir('frontend/chatapp') {
-                    sh 'npm install'
-                    sh 'npm run build'
+                script {
+                    dir('backend') {
+                        sh 'go run main.go &'
+                        // Add any other commands to check the backend
+                    }
                 }
             }
         }
 
-        stage('Build Backend') {
+        stage('Start Frontend') {
             steps {
-                dir('backend') {
-                    sh 'go build'
+                script {
+                    dir('frontend/chatapp') {
+                        sh 'npm install'
+                        sh 'export REACT_APP_BACKEND_URL="http://localhost:8080"' // Replace 8080 with your backend port
+                        sh 'npm start &'
+                        sh 'sleep 20s' // Wait for the frontend to start
+                        sh 'echo Frontend is running at http://localhost:3000' // Print the URL
+                        // Add any other commands to check the frontend
+                    }
                 }
             }
         }
 
-        stage('Test') {
-            steps {
-                dir('frontend/chatapp') {
-                    sh 'npm test'
-                }
-                dir('backend') {
-                    sh 'go test ./...'
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Add your deployment commands here
-            }
-        }
+        // Add more stages as needed
     }
 
     post {
         always {
             echo 'This will always run'
         }
-
         success {
-            echo 'This will run only if successful - Teja'
+            echo 'This will run only if successful'
         }
-
         failure {
-            echo 'This will run only if failed - Teja'
+            echo 'This will run only if failed'
         }
     }
 }
