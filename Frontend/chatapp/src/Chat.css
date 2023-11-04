@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  
+  .chat-container {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  .chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+
+
+  /* ... previous CSS styles ... */
+
+.message {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    max-width: 75%;
+    word-wrap: break-word;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .sender {
+     /* Gradient from black to gray to white */
+    background-color: orange;
+    color: #fff;
+    align-self: flex-start; /* Align sender messages to the left within their container */
+    border-top-left-radius: 0; /* Remove border radius on top left for sender */
+    border-top-right-radius: 10px; /* Restore border radius on top right for sender */
+    margin-left: auto; /* Push sender messages to the right side */
+    max-width: 50%; /* Limit the maximum width of sender messages to 70% of the container width */
+    word-wrap: break-word; /* Allow long words to wrap to the next line */
+  }
+
+  .sender .sender-name {
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .receiver {
+    background-color: #f0f0f0;
+    color: #333;
+    align-self: flex-start;
+    justify-content: flex-start;
+    width: 50%; /* Set message width to 50% */
+    border-top-left-radius: 0; /* Remove border radius on top left for receiver */
+  }
+  
+  .receiver .receiver-name {
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  
+  button[type="submit"] {
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #006bbf;
+  }
+  
