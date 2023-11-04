@@ -9,7 +9,7 @@ class App extends Component {
       message: '',  // Message input
       messages: []  // Array to store messages
     };
-    this.socket = new WebSocket('ws://localhost:8080/ws');
+    this.socket = new WebSocket('ws://localhost:8000/ws');
   }
 
   componentDidMount() {
