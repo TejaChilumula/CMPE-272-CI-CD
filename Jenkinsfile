@@ -4,7 +4,7 @@ pipeline {
     
 
     stages {
-        
+
         stage('Checkout') {
             steps {
                 script {
@@ -15,7 +15,7 @@ pipeline {
         stage('Check Backend') {
             steps {
                 script {
-                    dir('backend') {
+                    dir('Backend') {
                         sh 'go run main.go &'
                         // Add any other commands to check the backend
                     }
@@ -26,7 +26,7 @@ pipeline {
         stage('Start Frontend') {
             steps {
                 script {
-                    dir('frontend/chatapp') {
+                    dir('Frontend/chatapp') {
                         sh 'npm install'
                         sh 'export REACT_APP_BACKEND_URL="http://localhost:8080"' // Replace 8080 with your backend port
                         sh 'npm start &'
