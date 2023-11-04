@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     dir('Backend') {
-                        sh 'go run main.go &'
+                        bat 'start go run main.go &'
                         // Add any other commands to check the backend
                     }
                 }
@@ -27,11 +27,11 @@ pipeline {
             steps {
                 script {
                     dir('Frontend/chatapp') {
-                        sh 'npm install'
-                        sh 'export REACT_APP_BACKEND_URL="http://localhost:8080"' // Replace 8080 with your backend port
-                        sh 'npm start &'
-                        sh 'sleep 20s' // Wait for the frontend to start
-                        sh 'echo Frontend is running at http://localhost:3000' // Print the URL
+                        bat 'npm install'
+                        bat 'npm start &'
+                        //bat 'export REACT_APP_BACKEND_URL="http://localhost:8080"' // Replace 8080 with your backend port
+                        bat 'sleep 20s' // Wait for the frontend to start
+                        bat 'echo Frontend is running at http://localhost:3000' // Print the URL
                         // Add any other commands to check the frontend
                     }
                 }
